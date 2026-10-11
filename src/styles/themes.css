@@ -1,0 +1,33 @@
+/* Dark theme is the default. */
+:root {
+    color-scheme: dark;
+}
+
+/* Light theme is activated later through data-theme="light". */
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    --color-bg: #f5f6f8;
+    --color-surface: #ffffff;
+    --color-surface-raised: #eceff3;
+    --color-border: #d8dde5;
+
+    --color-text: #171923;
+    --color-text-muted: #535b69;
+    --color-text-subtle: #6c7482;
+
+    --color-terminal: #087f5b;
+    --color-terminal-muted: #087f5b;
+    --color-terminal-glow: rgb(8 127 91 / 16%);
+
+    --color-accent: #087f5b;
+    --color-accent-hover: #066b4c;
+    --color-accent-contrast: #ffffff;
+
+    --color-success: #087f5b;
+    --color-warning: #946200;
+    --color-error: #c62828;
+
+    --shadow-card: 0 12px 36px rgb(23 25 35 / 8%);
+    --shadow-focus: 0 0 0 3px rgb(8 127 91 / 25%);
+}

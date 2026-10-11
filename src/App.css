@@ -1,0 +1,22 @@
+
+main {
+  width: 100%;
+}
+
+main > section {
+  min-height: 240px;
+  padding-block: var(--section-space);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+main > section h2 {
+  margin-bottom: 0;
+  font-size: var(--text-2xl);
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  main > section {
+    min-height: 200px;
+  }
+}

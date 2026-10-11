@@ -1,0 +1,139 @@
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  border-bottom: var(--border-width) solid var(--color-border);
+  background: var(--color-bg);
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(16px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  width: min(100%, var(--content-width));
+  min-height: 56px;
+  margin-inline: auto;
+  padding-inline: var(--content-gutter);
+}
+
+.brand {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.brandAt {
+  color: var(--color-terminal-muted);
+}
+
+.prompt {
+  color: var(--color-accent);
+}
+
+.brandSuffix {
+  color: var(--color-terminal-muted);
+  font-weight: 400;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-terminal-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-success);
+  box-shadow: 0 0 10px var(--color-terminal-glow);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-5);
+  margin-left: auto;
+}
+
+.navigation a {
+  color: var(--color-terminal-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.navigation a:hover {
+  color: var(--color-accent);
+}
+
+.brand:focus-visible,
+.navigation a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 5px;
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 900px) {
+  .inner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-4);
+  }
+
+  .status {
+    margin-left: auto;
+  }
+
+  .navigation {
+    order: 3;
+    justify-content: flex-start;
+    gap: var(--space-4);
+    width: 100%;
+    margin-left: 0;
+    padding-bottom: var(--space-1);
+    overflow-x: auto;
+  }
+
+  .navigation a {
+    flex-shrink: 0;
+    padding-block: var(--space-2);
+  }
+}
+
+@media (max-width: 480px) {
+  .inner {
+    padding-inline: var(--space-4);
+  }
+
+  .brand {
+    font-size: var(--text-base);
+  }
+
+  .status {
+    font-size: 0.65rem;
+  }
+
+  .navigation {
+    gap: var(--space-5);
+  }
+}

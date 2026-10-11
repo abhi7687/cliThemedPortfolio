@@ -1,0 +1,129 @@
+.hero {
+    display: flex;
+    align-items: center;
+    min-height: min(680px, calc(100svh - 56px));
+    padding-block: var(--space-20);
+    border-bottom: var(--border-width) solid var(--color-border);
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: center;
+    gap: clamp(var(--space-8), 5vw, var(--space-16));
+}
+
+
+.content {
+    max-width: 680px;
+}
+
+
+.consolePanel {
+    min-width: 0;
+}
+
+
+.eyebrow {
+    margin-bottom: var(--space-5);
+    color: var(--color-terminal);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+}
+
+.content h1 {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-3xl);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+}
+
+.content h1 span {
+    color: var(--color-terminal);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+}
+
+.description {
+    max-width: 560px;
+    margin-bottom: var(--space-8);
+    font-size: var(--text-lg);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.primaryAction,
+.secondaryAction {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: var(--space-3) var(--space-5);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+        color var(--duration-fast) var(--ease-standard),
+        background-color var(--duration-fast) var(--ease-standard),
+        border-color var(--duration-fast) var(--ease-standard);
+}
+
+.primaryAction {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+}
+
+.primaryAction:hover {
+    border-color: var(--color-accent-hover);
+    background: var(--color-accent-hover);
+}
+
+.secondaryAction {
+    color: var(--color-text);
+}
+
+.secondaryAction:hover {
+    border-color: var(--color-terminal);
+    color: var(--color-terminal);
+}
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+    .hero {
+        min-height: auto;
+        padding-block: var(--space-16);
+    }
+
+    .container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-10);
+    }
+
+    .content h1 {
+        font-size: clamp(2.25rem, 10vw, 3.5rem);
+    }
+
+    .description {
+        font-size: var(--text-base);
+    }
+}
