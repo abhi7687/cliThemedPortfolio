@@ -30,10 +30,13 @@ function TestConsole() {
                     </span>
                 )}
             </code>
-            <span
-              className={`${styles.status} ${styles[test.status.toLowerCase()]}`}
-            >
-              {test.status}
+            <span className={`${styles.status} ${styles[test.status.toLowerCase()]}`}>
+                {test.status}
+                {test.status === 'RUNNING' && (
+                    <span className={styles.runningDots} aria-hidden="true">
+                        ...
+                    </span>
+                )}
             </span>
           </li>
         ))}

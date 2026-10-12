@@ -101,6 +101,33 @@
   animation: cursor-blink 1s steps(2, start) infinite;
 }
 
+.runningDots {
+    display: inline-block;
+    width: 1.5em;
+    text-align: left;
+    animation: runningDotsBlink 1.2s steps(4, end) infinite;
+}
+
+@keyframes runningDotsBlink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .runningDots {
+        animation: none;
+    }
+}
+
 @keyframes cursor-blink {
   to {
     visibility: hidden;

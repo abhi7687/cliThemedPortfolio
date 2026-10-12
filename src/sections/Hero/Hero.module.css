@@ -33,6 +33,57 @@
     letter-spacing: 0.08em;
 }
 
+
+.identityTerminal {
+    margin-bottom: var(--space-5);
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+}
+
+.commandLine {
+    min-height: 1.6em;
+    margin: 0;
+    overflow-wrap: anywhere;
+    color: var(--color-text);
+}
+
+.prompt {
+    color: var(--color-terminal);
+    font-weight: 700;
+}
+
+.cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 1em;
+    margin-left: 0.15em;
+    background: var(--color-terminal);
+    vertical-align: -0.12em;
+    animation: cursorBlink 1s steps(2, start) infinite;
+}
+
+.commandOutput {
+    min-height: 1.5em;
+    margin: var(--space-2) 0 0;
+    color: var(--color-terminal);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+}
+
+@keyframes cursorBlink {
+    to {
+        visibility: hidden;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cursor {
+        animation: none;
+    }
+}
+
+
 .content h1 {
     display: flex;
     flex-direction: column;
@@ -106,6 +157,18 @@
 .secondaryAction:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 4px;
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 @media (max-width: 600px) {
