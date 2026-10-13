@@ -5,23 +5,22 @@ import TestConsole from '../../components/console/TestConsole'
 import styles from './Hero.module.css'
 
 const NAME = "Hello, I'm Abhiram."
+const COMMAND = `echo "${NAME}"`
 const CYCLE_DURATION = 10000
 const TYPING_SPEED = 210
 
+const prefersReducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
 function Hero() {
-  const [typedCommand, setTypedCommand] = useState('')
-  const [showOutput, setShowOutput] = useState(false)
+  const [typedCommand, setTypedCommand] = useState(
+    prefersReducedMotion ? COMMAND : '',
+  )
+  const [showOutput, setShowOutput] = useState(prefersReducedMotion)
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches
-
-    if (reducedMotion) {
-      setTypedCommand(`echo "${NAME}"`)
-      setShowOutput(true)
-      return
-    }
+    if (prefersReducedMotion) return
 
     let timeoutId: ReturnType<typeof setTimeout>
     let characterIndex = 0
@@ -35,9 +34,9 @@ function Hero() {
 
       const typeNextCharacter = () => {
         characterIndex += 1
-        setTypedCommand(`echo "${NAME}"`.slice(0, characterIndex))
+        setTypedCommand(COMMAND.slice(0, characterIndex))
 
-        if (characterIndex < `echo "${NAME}"`.length) {
+        if (characterIndex < COMMAND.length) {
           timeoutId = setTimeout(typeNextCharacter, TYPING_SPEED)
         } else {
           setShowOutput(true)
@@ -65,7 +64,7 @@ function Hero() {
             Software Quality & Network Engineering
           </p>
 
-          <div className={styles.identityTerminal} aria-label={`echo ${NAME}`}>
+          <div className={styles.identityTerminal} aria-label={COMMAND}>
             <p className={styles.commandLine} aria-hidden="true">
               <span className={styles.prompt}>$</span>{' '}
               {typedCommand}
@@ -77,7 +76,7 @@ function Hero() {
           </div>
 
           <h1 id="hero-heading">
-            <span className={styles.visuallyHidden}>Hello, I'm Abhiram</span>
+            <span className={styles.visuallyHidden}>Hello, I'm Abhiram.</span>
             <span>Quality, testing and reliability</span>
           </h1>
 
